@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The import above (`AGENTS.md`, which itself defers to `.github/copilot-instructions.md` and `docs/BOUNDARIES.md`) is the canonical short entry point: ownership boundaries, the validated command set, and PR-routing rules. Keep `AGENTS.md` short and ecosystem-neutral — put Claude-specific or longer-form guidance here instead. Everything below is the cross-repo "big picture" that those files assume but don't spell out.
 
+## This deployment
+
+This repo is **`esong2001.github.io`**, the deployed personal site — a fork of the al-folio v1 starter, not the upstream template. It is served at the **root** of `https://esong2001.github.io` (`_config.yml`'s `baseurl:` is **blank**). The `/al-folio` baseurl that appears throughout the inherited docs/commands below (`--baseurl /al-folio`, `localhost:4000/al-folio/`, the docker `curl …/al-folio/`) is an upstream template/test-fixture convention; for a real preview of *this* site, build/serve with no baseurl. CI's integration and visual tests still pin `/al-folio` as a fixture and should be left as-is.
+
 ## What this repo is
 
 `al-folio` v1.x is a **thin Jekyll starter**, not a theme. It owns only: starter wiring (`Gemfile`, `_config.yml`, `_data/featured_plugins.yml`), example content (`_pages`, `_posts`, `_projects`, `_news`, `_teachings`, `_books`, `_bibliography`), docs (`docs/`), cross-gem integration tests (`test/integration_*.sh`), and visual/parity tests (`test/visual/`). **All runtime, layouts, includes, Sass, tags, filters, and feature JS live in versioned gems**, published independently on RubyGems. `docs/BOUNDARIES.md` is the authoritative area→gem ownership table.
